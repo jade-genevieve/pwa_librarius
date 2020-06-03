@@ -1,0 +1,11 @@
+<h1 class="title">Books</h1>
+
+<p>{{ this.alert }}</p>
+
+<ul class="books">
+  {{#each book}}
+  <li>{{this.title}}</li>
+  <li>{{this.author}}</li>
+  <li>{{this.description}}</li>
+  {{/each}}
+</ul>

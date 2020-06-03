@@ -1,0 +1,13 @@
+<h1 class="title">Wishlist</h1>
+
+<form id="new-post-form" action="/wishlist" method="post">
+  <input id="message" type="text" name="message" placeholder="Book title" value="">
+  <input type="submit" value="Save">
+</form>
+
+<ul class="books">
+  {{#each books}}
+  <li>{{this.book}}</li>
+  {{/each}}
+</ul>
+

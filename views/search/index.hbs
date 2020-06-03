@@ -1,0 +1,20 @@
+<h1 class="title">Result</h1>
+
+<ul class="posts">
+  {{#each posts}}
+  <p>Book Title </p>
+  <p>Author</p>
+  <p>Description</p>
+  <p>ISBN: {{this.message}}</p>
+  {{/each}}
+</ul>
+
+<ul>
+  <button class="new-post-link" href="/">Add to Library</button>
+  <button class="new-post-link" href="/">Borrow book</button>
+</ul>
+
+
+
+Not the right book?
+<button class="new-post-link" href="/">Enter manually</button>
