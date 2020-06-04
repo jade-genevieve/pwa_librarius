@@ -22,6 +22,12 @@ input[type="submit"] {
 
 .title {
   color : #505050;
+  font-weight: bold;
+}
+
+.authors {
+  color : #bdbdc7;
+  font-weight: bold;
 }
 
 .navbar {

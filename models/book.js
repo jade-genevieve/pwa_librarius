@@ -6,9 +6,8 @@ const BookSchema = new mongoose.Schema({
     required: true
   },
   isbn: {
-    type: String,
+    type: Array,
     required: true,
-    match: /[0-9]/ 
   },
   authors: {
     type: Array,
@@ -23,9 +22,12 @@ const BookSchema = new mongoose.Schema({
   publisher: {
     type: String
   },
-  updated_date: {
-    type: Date,
-    default: Date.now
+  pages: {
+      type: Number
+  },
+  quantity: {
+    type: Number,
+    default: 1
   }
 });
 

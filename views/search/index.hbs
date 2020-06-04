@@ -2,19 +2,24 @@
 
 <ul class="result">
   {{#each result}}
-  <p>Book Title </p>
-  <p>Author</p>
-  <p>Description</p>
-  <p>ISBN: {{this.isbn}}</p>
+  <img src={{imageLinks.smallThumbnail}}
+  alt="Book cover">
+  <p class="title">{{title}}</p>
+  <p class="authors">{{authors}}</p>
+  <p>{{publisher}}, {{publishedDate}}, {{pageCount}} pages</p>
+  <p>{{#each industryIdentifiers}} 
+    <p>{{type}}: {{identifier}} </p>
+    {{/each}}</p>
   {{/each}}
 </ul>
 
-<ul>
-  <button class="new-post-link" href="/">Add to Library</button>
-  <button class="new-post-link" href="/">Borrow book</button>
+<form method="post">
+  <button type="submit" class="big-thumb-button" href="/">Add to Library</button>
+  <button type="submit" class="big-thumb-button" href="/">Borrow book</button>
 </ul>
+
 
 
 
 Not the right book?
-<button class="new-post-link" href="/">Enter manually</button>
+<button type="submit" class="full-width-button" href="/">Enter manually</button>
