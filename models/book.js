@@ -10,8 +10,8 @@ const BookSchema = new mongoose.Schema({
     required: true,
     match: /[0-9]/ 
   },
-  author: {
-    type: String,
+  authors: {
+    type: Array,
     required: true
   },
   description: {

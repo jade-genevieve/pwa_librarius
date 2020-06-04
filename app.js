@@ -47,13 +47,17 @@ app.use(function(err, req, res, next) {
 });
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/librarius', {
+mongoose.connect('mongodb+srv://Libre1:123passWORD@librarius-ip06n.mongodb.net/librarius?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
+mongoose.connection
+  .on('open', () => {
+    console.log('Mongoose connection open');
+  })
+  .on('error', (err) => {
+    console.log(`Connection error: ${err.message}`);
+  });
 
 module.exports = app;

@@ -13,6 +13,13 @@ a {
   color: #00B7FF;
 }
 
+input[type="submit"] {
+  background-color: #505050;
+  border-radius: 5px;
+  color: #fdfdfd;
+
+}
+
 .title {
   color : #505050;
 }
