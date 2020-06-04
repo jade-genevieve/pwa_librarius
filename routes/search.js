@@ -8,7 +8,7 @@ var searchResult;
 
 /* GET book details. */
 router.get('/', function (req, res, next) {
-    console.log('bkjvla', searchResult.title)
+    console.log('Book details...', searchResult.title)
 
     res.render('search/index', { result: [searchResult] });
 });
@@ -32,20 +32,48 @@ router.post('/result', async function (req, res, next) {
     searchResult = await callGoogle(isbn, function (err, data) {
         if (err) {
             res.json(err);
-            console.log('fffffff', err)
+            console.log('Calling Google failed ', err)
         }
-        console.log("book received")
+        console.log('Calling Google succeeded')
         res.json({})
     });
 
-    console.log('rrrrr', searchResult)
+    console.log('Google replied ', searchResult)
 
     if (searchResult !== undefined) {
         res.status(201).redirect('/search');
     } else {
         const errorMsg = "Couldn't find a book with ISBN " + isbn
-        res.render('search/new', { error: errorMsg});
+        res.render('search/new', { alert: errorMsg});
     }
+
+    router.get('/add', function (req, res, next) {
+
+        const bookSchema = {
+            title: searchResult.title,
+            authors: searchResult.authors,
+            description: searchResult.description,
+            published_date: searchResult.publishedDate,
+            publisher: searchResult.publisher,
+            pages: searchResult.pages,
+            isbn: searchResult.industryIdentifiers,
+            image_links: searchResult.imageLinks.smallThumbnail
+        };
+
+        const newBook = new Book(bookSchema);
+
+        newBook.save(function(err) {
+            if (err){
+                console.log(err);
+                return
+            };
+            const savedMsg = 'Book added to library. Add another?'
+            res.render('search/new', { alert: savedMsg});
+        });
+
+       
+
+    });
 
 });
 

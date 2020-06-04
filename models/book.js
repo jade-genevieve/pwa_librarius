@@ -5,10 +5,6 @@ const BookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  isbn: {
-    type: Array,
-    required: true,
-  },
   authors: {
     type: Array,
     required: true
@@ -24,6 +20,13 @@ const BookSchema = new mongoose.Schema({
   },
   pages: {
       type: Number
+  },
+  isbn: {
+    type: Array,
+    required: true,
+  },
+  image_links: {
+      type: String
   },
   quantity: {
     type: Number,
