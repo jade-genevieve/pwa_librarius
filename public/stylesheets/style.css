@@ -36,10 +36,10 @@ input[type="submit"] {
   position: fixed;
   bottom: 0;
   width: 100%;
+  left: 0px;
 }
 
 .navbar a {
-
   float: left;
   display: block;
   color: #505050;
