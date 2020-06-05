@@ -57,7 +57,7 @@ router.post('/result', async function (req, res, next) {
             description: searchResult.description,
             published_date: searchResult.publishedDate,
             publisher: searchResult.publisher,
-            pages: searchResult.pages,
+            pages: searchResult.pageCount,
             isbn: searchResult.industryIdentifiers,
             image_links: searchResult.imageLinks.smallThumbnail
         };
