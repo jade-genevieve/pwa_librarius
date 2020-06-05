@@ -3,9 +3,11 @@
 <p>{{ alert }}</p>
 
 <ul class="books">
-  {{#each book}}
-  <li>{{this.title}}</li>
-  <li>{{this.author}}</li>
-  <li>{{this.description}}</li>
+  {{#each books}}
+  <img src={{this.image_links}} alt="Book cover">
+  <p class="title">{{this.title}}</p>
+  <p class="authors">{{this.authors}}</p>
+  <p>{{this.publisher}},{{this.pageCount}} pages</p>
+  <p>{{this.quantity}} available</p>
   {{/each}}
 </ul>
