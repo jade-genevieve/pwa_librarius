@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+
 var Book = require('../models/book')
 
 const { callGoogle } = require('../utils/callGoogle/index.js')
@@ -44,7 +46,7 @@ router.post('/result', async function (req, res, next) {
         res.status(201).redirect('/search');
     } else {
         const errorMsg = "Couldn't find a book with ISBN " + isbn
-        res.render('search/new', { alert: errorMsg});
+        res.render('search/new', { alert: errorMsg });
     }
 
     router.get('/add', function (req, res, next) {
@@ -60,19 +62,22 @@ router.post('/result', async function (req, res, next) {
             image_links: searchResult.imageLinks.smallThumbnail
         };
 
-        const newBook = new Book(bookSchema);
-
-        newBook.save(function(err) {
-            if (err){
-                console.log(err);
-                return
+        Book.findOneAndUpdate({ title: searchResult.title }, { $inc: { quantity: 1 } }, { new: true }, function (err, result) {
+            if (!err) {
+                if (!result) {
+                    result = new Book(bookSchema);
+                }
+                result.save(function (err) {
+                    if (err) {
+                        console.log(err);
+                        return
+                    };
+                    const savedMsg = 'Book added to library. Add another?'
+                    res.render('search/new', { alert: savedMsg });
+                });
             };
-            const savedMsg = 'Book added to library. Add another?'
-            res.render('search/new', { alert: savedMsg});
+
         });
-
-       
-
     });
 
 });

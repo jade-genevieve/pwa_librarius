@@ -10,7 +10,6 @@ var searchRouter = require('./routes/search');
 var booksRouter = require('./routes/books');
 var wishlistRouter = require('./routes/wishlist');
 
-
 var app = express();
 
 // view engine setup
@@ -27,8 +26,6 @@ app.use('/', indexRouter);
 app.use('/search', searchRouter);
 app.use('/books', booksRouter);
 app.use('/wishlist', wishlistRouter);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
